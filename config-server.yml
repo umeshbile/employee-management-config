@@ -6,7 +6,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/umeshbile/employee-management-config
+          uri: https://github.com/umeshbile/employee-management-config.git
           default-label: main
           clone-on-start: true
 
