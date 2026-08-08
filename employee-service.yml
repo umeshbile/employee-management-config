@@ -17,7 +17,11 @@ spring:
     properties:
       hibernate:
         format_sql: true
-
+  cloud:
+    openfeign:
+      circuitbreaker:
+        enabled: true
+        
 management:
   endpoints:
     web:
@@ -48,3 +52,25 @@ eureka:
     instance:
       prefer-ip-address: true
       instance-id: ${spring.application.name}:${server.port}
+
+resilience4j:
+
+  circuitbreaker:
+
+    instances:
+
+      departmentService:
+
+        slidingWindowType: COUNT_BASED
+
+        slidingWindowSize: 10
+
+        minimumNumberOfCalls: 5
+
+        failureRateThreshold: 50
+
+        waitDurationInOpenState: 10s
+
+        permittedNumberOfCallsInHalfOpenState: 3
+
+        automaticTransitionFromOpenToHalfOpenEnabled: true
