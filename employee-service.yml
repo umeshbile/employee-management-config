@@ -75,6 +75,9 @@ resilience4j:
 
         automaticTransitionFromOpenToHalfOpenEnabled: true
 
+  retry:
+    instances:
+      departmentService:
         maxAttempts: 3
 
         waitDuration: 1s
@@ -82,5 +85,15 @@ resilience4j:
         enableExponentialBackoff: true
 
         exponentialBackoffMultiplier: 2
+
+  bulkhead:
+
+    instances:
+
+      departmentService:
+
+        maxConcurrentCalls: 20
+
+        maxWaitDuration: 500ms
 
 
