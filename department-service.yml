@@ -39,7 +39,7 @@ jwt:
 eureka:
   client:
     service-url:
-      defaultZone: ${EUREKA_SERVER_URL:http://registry:8761/eureka}
+      defaultZone: http://registry:8761/eureka/
 
     healthcheck:
       enabled: true
