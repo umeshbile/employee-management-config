@@ -8,6 +8,8 @@ eureka:
   client:
     service-url:
       defaultZone: http://registry:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
 
 logging:
   level:
