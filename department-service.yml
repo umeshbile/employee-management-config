@@ -2,6 +2,9 @@ server:
   port: 8082
 
 spring:
+  application:
+    name: department-service
+
   datasource:
     url: jdbc:mysql://host.docker.internal:3306/department_db?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC
     username: root
@@ -11,9 +14,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-
     show-sql: true
-
     properties:
       hibernate:
         format_sql: true
@@ -32,6 +33,7 @@ logging:
   level:
     root: INFO
     com.ems.employee: DEBUG
+
 jwt:
   secret: 12345678901234567890123456789012abcdefgh
   expiration: 86400000
@@ -40,10 +42,9 @@ eureka:
   client:
     service-url:
       defaultZone: http://registry:8761/eureka/
-
     healthcheck:
       enabled: true
 
-    instance:
-      prefer-ip-address: true
-      instance-id: ${spring.application.name}:${server.port}
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${server.port}
